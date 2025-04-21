@@ -1,0 +1,32 @@
+<!-- Create new post page -->
+<div>
+  <!-- Page Title -->
+  <h1 class="text-4xl font-bold mb-8 text-center bg-amber-300 text-slate-900 p-4 rounded-lg shadow-lg">
+    New Post
+  </h1>
+
+  <!-- Form Container -->
+  <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl mx-auto shadow-2xl">
+    <%= simple_form_for @post do |f| %>
+
+      <!-- Title Input -->
+      <div class="mb-6">
+        <%= f.label :title, class: 'block text-lg text-amber-200 mb-2' %>
+        <%= f.input :title, input_html: { class: 'w-full p-2 rounded-lg text-white', placeholder: 'Enter title' }, wrapper: false %>
+      </div>
+
+      <!-- Content Input -->
+      <div class="mb-6">
+        <%= f.label :content, class: 'block text-lg text-amber-200 mb-2' %>
+        <%= f.input :content, input_html: { class: 'w-full p-4 h-40 rounded-lg text-white resize-none', placeholder: 'Write your content here...' }, wrapper: false %>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <%= f.button :submit, 'Create new post', class: 'bg-amber-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-300 transition-all font-semibold shadow-md' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
