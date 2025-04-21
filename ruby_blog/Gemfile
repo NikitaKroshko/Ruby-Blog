@@ -40,11 +40,9 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# More in-depth error explanations
-gem 'better_errors', '~> 2.10.1'
-
 # For styling
 gem 'tailwind_merge', '~> 1.2'
+gem 'tailwindcss-rails', '~> 4.2', '>= 4.2.2'
 
 # Simpler forms
 gem 'simple_form', '~> 5.3', '>= 5.3.1'
@@ -64,7 +62,14 @@ group :development, :test do
   gem 'guard', '~> 2.19', '>= 2.19.1'
 
   # Uses guard to reload the website upon a file changing
-  gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
+  
+  # More in-depth error explanations
+  gem 'better_errors', '~> 2.10.1'
+
+  # Allows tailwind to reload during dev with just guard
+  gem 'guard-shell'
+
 end
 
 group :development do
