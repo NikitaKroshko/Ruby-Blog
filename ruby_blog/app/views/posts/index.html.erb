@@ -1,2 +1,16 @@
-<h1 class = "title bg-blue-400 rounded">Blog something Index</h1>
+<!-- Main page for accessing all the blogs -->
+<div>
+  <!-- Title -->
+  <h1 class = "text-4xl font-bold mb-8 text-center bg-amber-300 text-slate-900 p-4 rounded-lg shadow-lg">Blogging website!</h1>
+
+  <!-- Container for all of the pots -->
+  <div class = "text-center bg-slate-900 text-white rounded-lg shadow-lg p-10">
+    <!-- The posts themselves -->
+    <% @posts.each do |post|%>
+        <br>
+          <%= link_to post.title, post %>
+        <br>
+    <% end %>
+  </div>
+</div>
 

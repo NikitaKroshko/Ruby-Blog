@@ -1,0 +1,22 @@
+<!-- Show posts page -->
+<div>
+  <!-- Post title -->
+  <h1 class="text-4xl font-bold mb-8 text-center bg-amber-300 text-slate-900 p-4 rounded-lg shadow-lg">
+    <%= @post.title %>
+  </h1>
+
+  <div>
+    <!-- Post content -->
+    <p class="text-center bg-slate-900 text-white rounded-lg shadow-lg p-10">
+      <%= @post.content %>
+    </p>
+
+    <!-- Centered buttons -->
+    <div class="flex justify-center space-x-4 p-4 m-2">
+      <%= link_to "Edit", edit_post_path(@post), class: "bg-slate-800 text-white rounded-lg px-4 py-2 shadow-md hover:bg-slate-700" %>
+      <%= link_to "Delete", post_path(@post), method: :delete , data: { confirm: "Are you sure?" }, class: "bg-red-800 text-white rounded-lg px-4 py-2 shadow-md hover:bg-red-700" %>
+    </div>
+  </div>
+</div>
+
+
