@@ -6,7 +6,7 @@
   </h1>
 
   <!-- Form Container -->
-  <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl mx-auto shadow-2xl">
+  <div class="bg-slate-800 p-6 rounded-2xl mx-auto shadow-2xl w-1/2">
     <%= simple_form_for @post do |f| %>
 
       <!-- Title Input -->
@@ -18,12 +18,12 @@
       <!-- Content Input -->
       <div class="mb-6">
         <%= f.label :content, class: 'block text-lg text-amber-200 mb-2' %>
-        <%= f.input :content, input_html: { class: 'w-full p-4 h-40 rounded-lg text-white resize-none', placeholder: 'Write your content here...' }, wrapper: false %>
+        <%= f.input :content, input_html: { class: 'w-full p-4 h-70 rounded-lg text-white resize-none', placeholder: 'Write your content here...' }, wrapper: false %>
       </div>
 
       <!-- Submit Button -->
       <div class="text-center">
-        <%= f.button :submit, 'Create new post', class: 'bg-amber-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-300 transition-all font-semibold shadow-md' %>
+        <%= f.button :submit, 'Create new post', class: 'bg-amber-400 text-slate-900 px-2 py-2 rounded-full hover:bg-amber-300 transition-all font-semibold shadow-md' %>
       </div>
 
     <% end %>
