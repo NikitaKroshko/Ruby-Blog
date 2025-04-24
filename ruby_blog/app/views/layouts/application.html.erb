@@ -29,6 +29,7 @@
         <a> <%= link_to "All Posts", root_path %> </a>
         <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) %></a>
         <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first) %></a>
+        <a><%= link_to "Create a New Post", new_post_path%></a>
       </nav>
       <%= yield %>
     </main>
