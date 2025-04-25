@@ -1,0 +1,19 @@
+<%= simple_form_for([@post, @post.comments.build]) do |f| %>
+  <!-- Title Input -->
+  <div class="mb-6">
+    <%= f.label :name, class: 'block text-lg text-amber-600 mb-2' %>
+    <%= f.input :name, input_html: { class: 'w-full p-2 rounded-lg text-white border-amber-400 border-2 focus:border-amber-900 focus:outline-none focus:ring-amber-500 focus:ring-2', placeholder: 'Enter title' }, wrapper: false, label: false %>
+  </div>
+
+  <!-- Content Input -->
+  <div class="mb-6">
+    <%= f.label :comment, class: 'block text-lg text-amber-600 mb-2' %>
+    <%= f.input :comment, input_html: { class: 'w-full p-4 h-28 rounded-lg text-white resize-none border-amber-400 border-2 focus:border-amber-900 focus:outline-none focus:ring-amber-500 focus:ring-2', placeholder: 'Write your content here...' }, wrapper: false, label: false %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="text-center">
+    <%= f.button :submit, 'Post Comment', class: 'bg-amber-600 text-slate-900 px-4 py-2 rounded-full hover:bg-amber-500 transition-all font-semibold shadow-md' %>
+  </div>
+<% end %>
+
