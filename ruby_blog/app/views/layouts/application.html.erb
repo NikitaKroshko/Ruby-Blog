@@ -25,7 +25,7 @@
 
   <body>
     <main class="bg-red-900 flex flex-col min-h-screen px-8 pt-3 text-white">
-      <nav class = " content-center bg-amber-300 rounded-lg my-2 text-slate-900">
+      <nav class = " content-center bg-amber-600 rounded-lg my-2 text-slate-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 ">
         <a> <%= link_to "All Posts", root_path, class: "hover:text-amber-900" %> </a>
         <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) , class: "hover:text-amber-900"%></a>
