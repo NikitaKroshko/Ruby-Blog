@@ -22,8 +22,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use postgress in production
-gem "pg", group: :production
+# Use postgress 
+gem 'pg', '>= 0'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -76,10 +76,6 @@ group :development, :test do
 
   # Allows tailwind to reload during dev with just guard
   gem "guard-shell"
-
-  # Use sqlite3 as the database for Active Record
-  # gem "sqlite3", ">= 2.1"
-  gem "pg" 
 end
 
 group :development do
