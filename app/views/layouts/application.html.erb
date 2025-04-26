@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Ruby Blog" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="bg-red-900 flex flex-col min-h-screen px-8 pt-3 text-white">
+      <nav class = " content-center bg-amber-600 rounded-lg my-2 text-slate-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 ">
+        <a> <%= link_to "All Posts", root_path, class: "hover:text-amber-900" %> </a>
+        <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) , class: "hover:text-amber-900"%></a>
+        <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first) , class: "hover:text-amber-900"%></a>
+        <a><%= link_to "Create a New Post", new_post_path  , class: "hover:text-amber-900" %></a>
+        </div>
+      </nav>
+      <%= yield %>
+    </main>
+  </body>
+</html>
