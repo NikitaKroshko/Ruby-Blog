@@ -20,7 +20,7 @@ test:
 production:
   primary:
     <<: *default
-    url: <%= ENV["DATABASE_URL"] %> # Heroku provides this
+    url: <%= ENV["DATABASE_URL"] %> # Heroku provides this for PostgreSQL
   cache:
     <<: *default
     database: storage/production_cache.sqlite3
