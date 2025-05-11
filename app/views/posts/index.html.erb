@@ -1,16 +1,23 @@
 <!-- Main page for accessing all the blogs -->
 <div>
   <!-- Title -->
-  <h1 class = "text-4xl font-bold mb-8 text-center bg-amber-600 text-slate-900 p-4 rounded-lg shadow-lg">Blogging website!</h1>
+  <h1 class="text-5xl font-extrabold mb-8 text-center bg-slate-300 text-slate-900 mx-5 p-10 rounded-lg shadow-lg">
+    Welcome to the Blog Hub
+  </h1>
+
+  <h1 class="text-2xl text-center">Blogs</h1>
 
   <!-- Container for all of the pots -->
-  <div class = "text-center bg-slate-900 text-white rounded-lg shadow-lg p-10">
+  <div class="text-center bg-slate-900 text-white rounded-lg shadow-lg p-10 m-10">
     <!-- The posts themselves -->
-    <% @posts.each do |post|%>
-        <br>
-          <%= link_to post.title, post %>
-        <br>
-    <% end %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @posts.each do |post| %>
+        <div class="bg-slate-700 rounded-lg p-5 m-2 hover:bg-slate-600 transition">
+          <%= link_to post.title, post, class: "text-xl font-semibold hover:text-white" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
 
