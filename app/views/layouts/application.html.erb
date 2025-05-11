@@ -25,12 +25,12 @@
 
   <body>
     <main class="bg-slate-800 flex flex-col min-h-screen   text-white">
-      <nav class = " content-center bg-red-900 my-2 text-slate-900">
+      <nav class = " content-center bg-slate-500 mb-2 text-slate-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 ">
-        <a> <%= link_to "All Posts", root_path, class: "hover:text-amber-900" %> </a>
-        <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) , class: "hover:text-amber-900"%></a>
-        <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first) , class: "hover:text-amber-900"%></a>
-        <a><%= link_to "Create a New Post", new_post_path  , class: "hover:text-amber-900" %></a>
+        <a> <%= link_to "All Posts", root_path, class: "hover:text-blue-200" %> </a>
+        <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) , class: "hover:text-blue-200"%></a>
+        <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first) , class: "hover:text-blue-200"%></a>
+        <a><%= link_to "Create a New Post", new_post_path  , class: "hover:text-blue-200" %></a>
         </div>
       </nav>
       <%= yield %>
