@@ -9,6 +9,7 @@ Things you may want to cover:
   3.2.2
 
 - System dependencies
+  Having postgress and using macos if you are using the zsh commands.
 
 - Configuration
 
