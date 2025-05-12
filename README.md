@@ -11,12 +11,6 @@ Things you may want to cover:
 - System dependencies
   Having postgress and using macos if you are using the zsh commands.
 
-- Configuration
-
-- Database creation
-
-- Database initialization
-
 - How to run the test suite
 
 - Services (job queues, cache servers, search engines, etc.)
