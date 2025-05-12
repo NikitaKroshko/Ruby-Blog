@@ -6,6 +6,7 @@ Link to the hosted website of this application.
 Things you may want to cover:
 
 - Ruby version
+  3.2.2
 
 - System dependencies
 
