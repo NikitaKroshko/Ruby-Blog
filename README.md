@@ -15,9 +15,3 @@ Things you may want to cover:
   rails s in one window
   bundle exec guard in another window
   and run postgress db if it is not currently running
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
