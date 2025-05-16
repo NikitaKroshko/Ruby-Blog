@@ -8,15 +8,23 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+ 
+  
   def create
-    @post = Post.new(post_params)
+    if current_user
+      @post = current_user.posts.new(post_params)
+    else
+      @post = Post.new(post_params)
+    end
 
-    if @post.save 
+    if @post.save
       redirect_to @post
     else
       render 'new'
     end
   end
+
+
 
   def show
   @post = Post.find(params[:id])
