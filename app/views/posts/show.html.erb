@@ -5,6 +5,10 @@
     <%= @post.title %>
   </h1>
 
+<p class="text-center text-sm text-slate-400 mb-4">
+  Posted by: <%= @post.user ? @post.user.username : "Anonymous" %>
+</p>
+
   <!-- Post content -->
   <p class="text-center bg-slate-900 text-white rounded-lg shadow-lg p-10 max-w-4xl mx-auto leading-relaxed">
     <%= @post.content %>
