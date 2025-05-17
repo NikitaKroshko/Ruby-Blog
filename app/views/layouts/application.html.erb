@@ -10,30 +10,61 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="bg-slate-800 flex flex-col min-h-screen   text-white">
-      <nav class = " content-center bg-slate-500 mb-2 text-slate-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 lg:text-lg xl:text-xl md:text-md sm:text-sm text-sm ">
-        <a> <%= link_to "All Posts", root_path, class: "hover:text-blue-200" %> </a>
-        <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first) , class: "hover:text-blue-200"%></a>
-        <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first) , class: "hover:text-blue-200"%></a>
-        <a><%= link_to "Create a New Post", new_post_path  , class: "hover:text-blue-200" %></a>
+    <main class="bg-slate-800 flex flex-col min-h-screen text-white">
+      <nav class="content-center bg-slate-500 mb-2 text-slate-900 relative">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 lg:text-lg xl:text-xl md:text-md sm:text-sm text-sm">
+
+          <a><%= link_to "All Posts", root_path, class: "hover:text-blue-200" %></a>
+          <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first), class: "hover:text-blue-200" %></a>
+          <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first), class: "hover:text-blue-200" %></a>
+          <a><%= link_to "Create a New Post", new_post_path, class: "hover:text-blue-200" %></a>
+
+          <% if user_signed_in? %>
+            <div class="relative">
+              <button id="user-greeting" class="hover:text-blue-200 focus:outline-none">
+                Hello, <%= current_user.username %> ▼
+              </button>
+
+              <div id="logout-popup" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded shadow-lg z-50">
+                <%= button_to "Logout", logout_path, method: :delete, form: {class: "m-2"}, class: "w-full text-left px-4 py-2 hover:bg-red-600 hover:text-white rounded" %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "Login", new_session_path, class: "hover:text-blue-200" %>
+          <% end %>
         </div>
       </nav>
       <%= yield %>
     </main>
+
+    <script>
+      document.addEventListener("turbo:load", () => {
+        const userGreeting = document.getElementById("user-greeting");
+        const logoutPopup = document.getElementById("logout-popup");
+
+        if (userGreeting) {
+          userGreeting.addEventListener("click", () => {
+            logoutPopup.classList.toggle("hidden");
+          });
+
+          document.addEventListener("click", (e) => {
+            if (!userGreeting.contains(e.target) && !logoutPopup.contains(e.target)) {
+              logoutPopup.classList.add("hidden");
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
+
