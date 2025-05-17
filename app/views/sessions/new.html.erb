@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Sessions#new</h1>
-  <p>Find me in app/views/sessions/new.html.erb</p>
+<div class="min-h-screen bg-slate-800 flex items-center justify-center">
+  <div class="bg-slate-900 p-8 rounded-2xl shadow-lg w-96">
+    <h1 class="text-4xl font-bold mb-6 text-center text-slate-300">Login</h1>
+
+    <%= form_with url: login_path, scope: :session, local: true do |f| %>
+      <div class="mb-4">
+        <%= f.label :username, class: "block text-slate-400 mb-1" %>
+        <%= f.text_field :username, autofocus: true, class: "w-full p-2 rounded bg-slate-700 text-white" %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :password, class: "block text-slate-400 mb-1" %>
+        <%= f.password_field :password, class: "w-full p-2 rounded bg-slate-700 text-white" %>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit "Log in", class: "bg-slate-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-500 transition font-semibold" %>
+      </div>
+    <% end %>
+
+    <p class="mt-4 text-center text-slate-400">
+      Don't have an account? <%= link_to "Sign up", new_user_path, class: "text-amber-400" %>
+    </p>
+  </div>
 </div>
+
