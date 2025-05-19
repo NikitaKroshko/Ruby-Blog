@@ -6,7 +6,8 @@
     <%= f.label :title, class: 'block text-lg font-medium text-amber-400 mb-2' %>
     <%= f.input :title, input_html: {
           class: 'w-full p-3 rounded-md text-white bg-slate-800 border-2 border-amber-400 focus:border-amber-600 focus:ring-2 focus:ring-amber-500 focus:outline-none placeholder-slate-400',
-          placeholder: 'Enter title'
+          placeholder: 'Enter title',
+          required: true
         },
         wrapper: false, label: false, required: true %>
   </div>
