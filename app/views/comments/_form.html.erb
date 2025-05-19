@@ -13,9 +13,12 @@
     <%= f.label :name, class: 'block text-lg font-medium text-slate-400 mb-2' %>
     <%= f.input :name, input_html: {
           class: 'w-full p-3 rounded-md text-white bg-slate-800 border-2 border-slate-400 focus:border-slate-600 focus:ring-2 focus:ring-slate-500 focus:outline-none placeholder-slate-400',
-          placeholder: current_user.username
+          placeholder: 'Your name ...',
+          value: current_user.username
         },
         wrapper: false, label: false %>
+
+
     <% end %>
   </div>
 
