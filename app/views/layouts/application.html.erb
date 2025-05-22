@@ -36,7 +36,7 @@
               </button>
 
               <div id="logout-popup" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded shadow-lg z-50">
-                <%= button_to "Profile", user_path(current_user) %>
+                <%= link_to(current_user.username, user_path(current_user)) %>
                 <%= button_to "Logout", logout_path, method: :delete, form: {class: "m-2"}, class: "w-full text-left px-4 py-2 hover:bg-red-600 hover:text-white rounded" %>
               </div>
             </div>
