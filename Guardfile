@@ -40,15 +40,13 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
-
-
 guard :shell, all_on_start: true, run_on_modifications: true do
   watch(%r{^tailwind\.config\.js$}) { run_tailwind }
   watch(%r{^app/assets/stylesheets/.*\.css$}) { run_tailwind }
 
   def run_tailwind
-    puts "==> Rebuilding Tailwind CSS with Rails tailwind:watch..."
-    system("bin/rails tailwindcss:watch")
+    puts "==> Rebuilding Tailwind CSS with explicit config from project root..."
+    system("npx tailwindcss -c ./tailwind.config.js -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch")
   end
 end
 
