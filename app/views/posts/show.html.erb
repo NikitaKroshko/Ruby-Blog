@@ -10,9 +10,9 @@ Posted by: <%= @post.user ? link_to(@post.user.username, user_path(@post.user)) 
 </p>
 
   <!-- Post content -->
-  <p class="text-center bg-slate-900 text-white rounded-lg shadow-lg p-10 max-w-4xl mx-auto leading-relaxed">
-    <%= markdown(@post.content) %>
-  </p>
+<div class="prose prose-invert bg-slate-900 text-white rounded-lg shadow-lg p-10 max-w-4xl mx-auto leading-relaxed">
+  <%= markdown(@post.content) %>
+</div>
 
   <!-- Centered buttons -->
   <div class="flex justify-center space-x-4 mt-6 mb-10">
