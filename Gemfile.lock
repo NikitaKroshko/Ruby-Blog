@@ -302,6 +302,7 @@ GEM
       ffi (~> 1.0)
     rdoc (6.13.1)
       psych (>= 4.0.0)
+    redcarpet (3.6.1)
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
@@ -444,6 +445,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
+  redcarpet
   rubocop-rails-omakase
   selenium-webdriver
   simple_form (~> 5.3, >= 5.3.1)
