@@ -16,7 +16,7 @@ Posted by: <%= @post.user ? link_to(@post.user.username, user_path(@post.user)) 
 
   <!-- Centered buttons -->
   <div class="flex justify-center space-x-4 mt-6 mb-10">
-  <% if @post.user!= nil and current_user.username.eql?(@post.user.username) or current_user.admin %>
+  <% if @post.user!= nil and current_user!= nil and current_user.username.eql?(@post.user.username) or current_user.admin %>
     <%= link_to "Edit", edit_post_path(@post), class: "bg-slate-700 text-white rounded-lg px-5 py-2 shadow-md hover:bg-slate-700 transition" %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-800 text-white rounded-lg px-5 py-2 shadow-md hover:bg-red-700 transition" %>
   <% end %>
