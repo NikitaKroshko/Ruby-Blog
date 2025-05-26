@@ -6,7 +6,7 @@
   </h1>
 
 <p class="text-center text-sm text-slate-400 mb-4">
-Posted by: <%= @post.user ? link_to(@post.user.username, user_path(@post.user), class: "text-amber-400") : "Anonymous" %>
+Posted by: <%= @post.user ? link_to(@post.user.username, user_path(@post.user), class: "text-amber-400 hover:underline") : "Anonymous" %>
 </p>
 
   <!-- Post content -->
