@@ -11,11 +11,14 @@
   <div class="text-center bg-slate-900 text-white rounded-lg shadow-lg p-10 m-10">
     <!-- The posts themselves -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <% @posts.each do |post| %>
-        <div class="bg-slate-700 rounded-lg p-5 m-2 transition">
-          <%= link_to post.title, post, class: "text-xl font-semibold hover:text-amber-400" %>
+    <% @posts.each do |post| %>
+      <%= link_to post, class: "block bg-slate-700 rounded-lg p-5 m-2 transition hover:bg-slate-600" do %>
+        <div>
+          <h2 class="text-xl font-semibold text-white hover:text-amber-400"><%= post.title %></h2>
         </div>
       <% end %>
+    <% end %>
+
     </div>
   </div>
 </div>
