@@ -12,6 +12,8 @@
       <%= pluralize(@user.posts.count, "Post") %> by <%= @user.username %>
     </h2>
 
+    <%= link_to( 'Settings', setting_user_path(current_user)) %>
+
     <% if @user.posts.any? %>
       <ul class="space-y-4">
         <% @user.posts.order(created_at: :desc).each do |post| %>
