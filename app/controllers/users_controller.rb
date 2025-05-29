@@ -21,7 +21,9 @@ class UsersController < ApplicationController
     end
   end
 
-  
+  def setting
+    @user = current_user
+  end
 
   private
 
