@@ -6,6 +6,7 @@
     <%= @user.username %>'s Settings Configuration 
   </h1>
 
+  <!-- Settings form -->
   <%= simple_form_for @user, url: user_path(@user), method: :patch, html: { class: "max-w-4xl mx-auto p-6 bg-slate-900 text-white rounded-lg shadow" } do |f| %>
     <div class="mb-6">
       Night Mode: <%= @user.night_mode ? "Enabled" : "Disabled" %>
