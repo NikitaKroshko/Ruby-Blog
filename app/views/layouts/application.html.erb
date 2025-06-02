@@ -37,9 +37,15 @@
 
               <div id="logout-popup" class="hidden absolute right-0 m-4 p-4 w-40 bg-white text-black rounded shadow-lg z-50">
                 <ul>
+                  <li>
                 <%= link_to(current_user.username, user_path(current_user), class: "w-full text-left px-4 py-2 hover:bg-amber-400 m-2 hover:text-white rounded") %>
+                  </li>
+                  <li>
                 <%=  link_to "Settings", setting_user_path(current_user), class: "w-full text-left px-4 py-2 hover:bg-blue-500 m-2 hover:text-white rounded" %>
+                  </li>
+                  <li>
                 <%= button_to "Logout", logout_path, method: :delete, form: {class: "m-2"}, class: "w-full text-left px-4 py-2 hover:bg-red-600 hover:text-white rounded" %>
+                  </li>
                 </ul
               </div>
             </div>
