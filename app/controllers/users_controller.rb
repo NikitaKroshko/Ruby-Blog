@@ -20,6 +20,14 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to setting_user_path(@user), notice: "Settings updated"
+    else
+      render :setting, status: :unprocessable_entity
+    end
+  end
 
   def setting
     @user = current_user
@@ -28,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :night_mode)
   end
 end
