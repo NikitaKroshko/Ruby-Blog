@@ -13,6 +13,7 @@
     </h2>
 
 
+    <!-- User's Individual Posts -->
     <% if @user.posts.any? %>
       <ul class="space-y-4">
         <% @user.posts.order(created_at: :desc).each do |post| %>
