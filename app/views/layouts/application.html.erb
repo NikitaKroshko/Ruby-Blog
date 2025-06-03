@@ -21,7 +21,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
+
+<body class="<%= @user&.night_mode ? 'dark' : '' %> bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
     <main class="bg-slate-800 flex flex-col min-h-screen text-white">
       <nav class="content-center bg-slate-500 mb-2 text-slate-900 relative">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 lg:text-lg xl:text-xl md:text-md sm:text-sm text-sm">
