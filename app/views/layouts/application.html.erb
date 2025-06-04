@@ -30,7 +30,7 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 lg:text-lg xl:text-xl md:text-md sm:text-sm text-sm">
 
           <!-- Navigation Bar -->
-          <a><%= link_to "All Posts", root_path, class: "dark:bg-amber-400 hover:text-blue-200" %></a>
+          <a><%= link_to "All Posts", root_path, class: "hover:text-blue-200" %></a>
           <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first), class: "hover:text-blue-200" %></a>
           <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first), class: "hover:text-blue-200" %></a>
           <a><%= link_to "Create a New Post", new_post_path, class: "hover:text-blue-200" %></a>
