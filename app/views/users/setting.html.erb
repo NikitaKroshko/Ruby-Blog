@@ -15,7 +15,7 @@
 
     <!-- Description field -->
     <div class="mb-6">
-      <%= f.input :desc, as: :text, label: "Profile Description", input_html: { rows: 5, class: "w-full p-3 rounded bg-slate-800 text-white border border-gray-600" }, label_html: { class: "text-white text-lg" } %>
+      <%= f.input :desc, as: :text, label: "Profile Description", input_html: { value: @user.desc ,rows: 5, class: "w-full p-3 rounded bg-slate-800 text-white border border-gray-600" }, label_html: { class: "text-white text-lg" } %>
     </div>
 
     <%= f.button :submit, "Save Settings", class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
