@@ -31,3 +31,117 @@
 <% end %>
 
 <!-- Form for adding the attachments to post -->
+<% if @post.persisted? %>
+  <%= form_with(model: [@post, @post.attachments.build], local: true, class: "mt-8", html: { multipart: true }) do |form| %>
+    <div class="mb-6">
+      <h3 class="block text-lg font-medium text-slate-400 mb-3">Add Attachments</h3>
+
+      <div class="w-full p-8 border-2 border-dashed border-slate-400 rounded-md text-center bg-slate-800 hover:bg-slate-700 transition-all cursor-pointer"
+           id="dropzone">
+        <div class="flex flex-col items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-slate-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          </svg>
+          <p class="text-slate-400 mb-2">Drag and drop files here or click to select files</p>
+          <p class="text-slate-500 text-sm">PDF, images, and documents up to 10MB</p>
+        </div>
+
+        <%= form.file_field :files, multiple: true, direct_upload: true, class: "hidden", id: "file-input" %>
+      </div>
+
+      <div id="file-preview" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <!-- File previews will appear here -->
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= form.submit "Upload Attachments", class: "bg-slate-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-500 transition-all font-semibold shadow-lg" %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @post.persisted? %>
+  <%= javascript_tag do %>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropzone = document.getElementById('dropzone');
+      const fileInput = document.getElementById('file-input');
+      const filePreview = document.getElementById('file-preview');
+
+      if (!dropzone || !fileInput || !filePreview) return;
+
+      // Trigger file dialog when clicking on the dropzone
+      dropzone.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      // Handle drag and drop events
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, preventDefaults, false);
+      });
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      // Highlight dropzone when dragging over it
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => {
+          dropzone.classList.add('border-amber-500', 'bg-slate-700');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => {
+          dropzone.classList.remove('border-amber-500', 'bg-slate-700');
+        });
+      });
+
+      // Handle dropped files
+      dropzone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+        updateFilePreview(files);
+      });
+
+      // Handle selected files
+      fileInput.addEventListener('change', function() {
+        updateFilePreview(this.files);
+      });
+
+      // Update file preview
+      function updateFilePreview(files) {
+        filePreview.innerHTML = '';
+
+        if (files.length > 0) {
+          Array.from(files).forEach(file => {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'flex items-center p-3 bg-slate-700 rounded-md';
+
+            const fileType = file.type.split('/')[0];
+            let fileIcon = '';
+
+            if (fileType === 'image') {
+              fileIcon = '<svg class="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>';
+            } else if (file.type === 'application/pdf') {
+              fileIcon = '<svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>';
+            } else {
+              fileIcon = '<svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>';
+            }
+
+            fileItem.innerHTML = `
+              <div class="mr-3">${fileIcon}</div>
+              <div class="flex-1 truncate">
+                <p class="text-white text-sm truncate">${file.name}</p>
+                <p class="text-slate-400 text-xs">${(file.size / 1024).toFixed(1)} KB</p>
+              </div>
+            `;
+
+            filePreview.appendChild(fileItem);
+          });
+        }
+      }
+    });
+  <% end %>
+<% end %>
