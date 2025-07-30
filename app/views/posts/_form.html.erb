@@ -1,6 +1,5 @@
 <!-- Form Container -->
 <%= simple_form_for @post do |f| %>
-
   <!-- Title Input -->
   <div class="mb-6">
     <%= f.label :title, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -11,7 +10,6 @@
         },
         wrapper: false, label: false, required: true %>
   </div>
-
   <!-- Content Input -->
   <div class="mb-6">
     <%= f.label :content, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -21,21 +19,17 @@
         },
         wrapper: false, label: false %>
   </div>
-
   <!-- Submit Button -->
   <div class="text-center">
     <%= f.button :submit, 'Create New Post',
         class: 'bg-slate-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-500 transition-all font-semibold shadow-lg' %>
   </div>
-
 <% end %>
-
 <!-- Form for adding the attachments to post -->
 <% if @post.persisted? %>
   <%= form_with(model: [@post, @post.attachments.build], local: true, class: "mt-8", html: { multipart: true }) do |form| %>
     <div class="mb-6">
       <h3 class="block text-lg font-medium text-slate-400 mb-3">Add Attachments</h3>
-
       <div class="w-full p-8 border-2 border-dashed border-slate-400 rounded-md text-center bg-slate-800 hover:bg-slate-700 transition-all cursor-pointer"
            id="dropzone">
         <div class="flex flex-col items-center justify-center">
@@ -45,21 +39,17 @@
           <p class="text-slate-400 mb-2">Drag and drop files here or click to select files</p>
           <p class="text-slate-500 text-sm">PDF, images, and documents up to 10MB</p>
         </div>
-
         <%= form.file_field :files, multiple: true, direct_upload: true, class: "hidden", id: "file-input" %>
       </div>
-
       <div id="file-preview" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
         <!-- File previews will appear here -->
       </div>
     </div>
-
     <div class="text-center mt-4">
       <%= form.submit "Upload Attachments", class: "bg-slate-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-500 transition-all font-semibold shadow-lg" %>
     </div>
   <% end %>
 <% end %>
-
 <!-- JS code for everything to work -->
 <% if @post.persisted? %>
   <%= javascript_tag do %>
