@@ -4,11 +4,9 @@
   <h1 class="text-5xl font-extrabold mb-8 text-center bg-slate-300 text-slate-900 mx-5 p-10 rounded-lg shadow-lg">
     Register
   </h1>
-
   <!-- Form Container -->
   <div class="bg-slate-900 p-6 rounded-2xl mx-auto shadow-2xl w-1/2">
     <%= simple_form_for @user do |f| %>
-
       <!-- Username Input -->
       <div class="mb-6">
         <%= f.label :username, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -18,7 +16,6 @@
             },
             wrapper: false, label: false %>
       </div>
-
       <!-- Password Input -->
       <div class="mb-6">
         <%= f.label :password, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -28,7 +25,6 @@
             },
             wrapper: false, label: false %>
       </div>
-
       <!-- Password Confirmation Input -->
       <div class="mb-6">
         <%= f.label :password_confirmation, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -38,14 +34,11 @@
             },
             wrapper: false, label: false %>
       </div>
-
       <!-- Submit Button -->
       <div class="text-center">
         <%= f.button :submit, 'Register',
             class: 'bg-slate-400 text-slate-900 px-6 py-2 rounded-full hover:bg-amber-500 transition-all font-semibold shadow-lg' %>
       </div>
-
     <% end %>
   </div>
 </div>
-
