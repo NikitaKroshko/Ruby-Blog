@@ -1,25 +1,19 @@
 <!-- User profile page -->
 <div class="min-h-screen bg-slate-800 text-white">
-
   <!-- Username Header -->
   <h1 class="text-5xl font-extrabold mb-8 text-center bg-slate-300 text-slate-900 mx-5 p-10 rounded-lg shadow-lg">
-    <%= @user.username %>'s Settings Configuration 
+    <%= @user.username %>'s Settings Configuration
   </h1>
-
 <!-- Settings form -->
   <%= simple_form_for @user, url: user_path(@user), method: :patch, html: { class: "max-w-4xl mx-auto p-6 bg-slate-900 text-white rounded-lg shadow" } do |f| %>
     <div class="mb-6">
       Night Mode: <%= @user.night_mode ? "Enabled" : "Disabled" %>
       <%= f.input :night_mode, as: :boolean, label: "Enable Night Mode", input_html: { value: @user.night_mode, class: "w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded" }, label_html: { class: "text-white text-lg" } %>
     </div>
-
     <!-- Description field -->
     <div class="mb-6">
       <%= f.input :desc, as: :text, label: "Profile Description", input_html: { value: @user.desc ,rows: 5, class: "w-full p-3 rounded bg-slate-800 text-white border border-gray-600" }, label_html: { class: "text-white text-lg" } %>
     </div>
-
     <%= f.button :submit, "Save Settings", class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   <% end %>
 </div>
-
-
