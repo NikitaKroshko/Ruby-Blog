@@ -1,6 +1,5 @@
 <%= simple_form_for([@post, @post.comments.build]) do |f| %>
   <!-- Title Input -->
-
   <div class="mb-6">
     <% if current_user == nil %>
     <%= f.label :name, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -17,11 +16,8 @@
           value: current_user.username
         },
         wrapper: false, label: false %>
-
-
     <% end %>
   </div>
-
   <!-- Content Input -->
   <div class="mb-6">
     <%= f.label :comment, class: 'block text-lg font-medium text-slate-400 mb-2' %>
@@ -31,12 +27,9 @@
         },
         wrapper: false, label: false %>
   </div>
-
   <!-- Submit Button -->
   <div class="text-center">
     <%= f.button :submit, 'Post Comment',
         class: 'bg-slate-600 text-slate-900 px-6 py-2 rounded-full hover:bg-slate-500 transition-all font-semibold shadow-lg' %>
   </div>
 <% end %>
-
-
