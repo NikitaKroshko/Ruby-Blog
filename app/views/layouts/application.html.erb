@@ -3,45 +3,35 @@
   <head>
     <title><%= content_for(:title) || "Ruby Blog" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
     <!-- Styling Imports -->
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://cdn.tailwindcss.com"></script>
-    
   </head>
-
-
 <body class=" dark <%= current_user&.night_mode ? 'dark' : '' %> bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
     <main class="bg-slate-800 flex flex-col min-h-screen text-white">
       <nav class="content-center bg-slate-500 mb-2 text-slate-900 relative">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 lg:text-lg xl:text-xl md:text-md sm:text-sm text-sm">
-
           <!-- Navigation Bar -->
           <a><%= link_to "All Posts", root_path, class: "hover:text-blue-200" %></a>
           <a><%= link_to "Latest Post", post_path(Post.order(created_at: :desc).first), class: "hover:text-blue-200" %></a>
           <a><%= link_to "Random Post", post_path(Post.order("RANDOM()").first), class: "hover:text-blue-200" %></a>
           <a><%= link_to "Create a New Post", new_post_path, class: "hover:text-blue-200" %></a>
-
           <!-- Login Section -->
           <% if user_signed_in? %>
             <div class="relative">
               <button id="user-greeting" class="hover:text-blue-200 focus:outline-none">
                 Hello, <%= current_user.username %> ▼
               </button>
-
               <div id="logout-popup" class="hidden absolute p-4 gap-2 right-0 w-40 bg-white text-black rounded shadow-lg z-50">
               <ul>
                 <li class="m-2">
@@ -63,7 +53,6 @@
       </nav>
       <%= yield %>
     </main>
-
     <!-- Popup Script -->
     <script>
       document.addEventListener("turbo:load", () => {
@@ -83,7 +72,5 @@
         }
       });
     </script>
-
   </body>
 </html>
-
