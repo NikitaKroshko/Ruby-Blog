@@ -58,12 +58,10 @@
       document.addEventListener("turbo:load", () => {
         const userGreeting = document.getElementById("user-greeting");
         const logoutPopup = document.getElementById("logout-popup");
-
         if (userGreeting) {
           userGreeting.addEventListener("click", () => {
             logoutPopup.classList.toggle("hidden");
           });
-
           document.addEventListener("click", (e) => {
             if (!userGreeting.contains(e.target) && !logoutPopup.contains(e.target)) {
               logoutPopup.classList.add("hidden");
